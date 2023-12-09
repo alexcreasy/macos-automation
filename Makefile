@@ -13,4 +13,3 @@ encrypt:
 gitinit:
 	@./git-init.sh
 	@echo "ansible vault pre-commit hook installed"
-	@test -f vault.gpg || gpg --gen-random --armor 1 43 | gpg --armor -r $(GPG_ID) -e -o vault.gpg
