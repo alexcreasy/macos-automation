@@ -1,0 +1,10 @@
+---
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: ~/bin/{{ (item | basename | splitext)[0] }}
+    owner: acreasy
+    group: staff
+    mode: "0755"
+  with_fileglob:
+    - scripts/*.sh

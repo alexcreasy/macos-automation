@@ -1,0 +1,9 @@
+---
+- name: Install rosetta2 on macOS / arm64 machines
+  ansible.builtin.import_tasks: rosetta2.yml
+
+- name: Setup user bin directory for scripts
+  ansible.builtin.import_tasks: bindir.yml
+
+- name: Copy utility scripts
+  ansible.builtin.import_tasks: scripts.yml

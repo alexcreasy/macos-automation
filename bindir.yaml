@@ -1,0 +1,16 @@
+---
+- name: Create user bin dir and add to global path
+  hosts: localhost
+  tasks:
+    - name: Create ~/bin dir if it doesn't exist
+      ansible.builtin.file:
+        path: "{{ lookup('env', 'HOME') }}/bin"
+        state: directory
+        mode: "0751"
+
+    - name: Set path in profile
+      ansible.builtin.lineinfile:
+        dest: /etc/profile
+        insertafter: EOF
+        line: PATH=$HOME/bin:$PATH
+      become: true

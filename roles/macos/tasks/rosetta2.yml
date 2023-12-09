@@ -1,0 +1,8 @@
+---
+- name: Install rosetta2 if arch is arm64
+  ansible.builtin.command: softwareupdate --install-rosetta --agree-to-license
+  args:
+    creates: /Library/Apple/usr/share/rosetta
+  when:
+    - ansible_os_family == 'Darwin'
+    - ansible_machine == 'arm64'

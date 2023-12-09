@@ -1,0 +1,5 @@
+---
+# defaults file for gpg
+
+gpg_install_key_id: "{{ primary_gpg_private_key.id }}"
+gpg_install_key: "{{ primary_gpg_private_key.key }}"

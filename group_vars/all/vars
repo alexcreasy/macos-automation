@@ -1,2 +1,5 @@
 ---
 greeting: "{{ vault_greeting }}"
+
+# GPG
+primary_gpg_private_key: "{{ vault_primary_gpg_private_key }}"
