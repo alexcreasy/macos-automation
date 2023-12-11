@@ -1,2 +1,16 @@
 ---
-# tasks file for roles/git
+- name: Template gitconfig file 
+  ansible.builtin.template:
+    src: .gitconfig.j2
+    dest: '{{ ansible_env.HOME }}/.gitconfig'
+    owner: '{{ personal.username.primary }}'
+    group: staff
+    mode: '0751'
+
+- name: Copy global gitignore
+  ansible.builtin.copy:
+    src: .gitignore
+    dest: '{{ ansible_env.HOME }}/.gitignore'
+    owner: '{{ personal.username.primary }}'
+    group: staff
+    mode: '0644'
