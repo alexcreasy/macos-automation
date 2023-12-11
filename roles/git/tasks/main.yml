@@ -1,9 +1,9 @@
 ---
-- name: Template gitconfig file 
+- name: Template gitconfig file
   ansible.builtin.template:
     src: .gitconfig.j2
     dest: '{{ ansible_env.HOME }}/.gitconfig'
-    owner: '{{ personal.username.primary }}'
+    owner: '{{ personal_username_primary }}'
     group: staff
     mode: '0751'
 
@@ -11,6 +11,6 @@
   ansible.builtin.copy:
     src: .gitignore
     dest: '{{ ansible_env.HOME }}/.gitignore'
-    owner: '{{ personal.username.primary }}'
+    owner: '{{ personal_username_primary }}'
     group: staff
     mode: '0644'
