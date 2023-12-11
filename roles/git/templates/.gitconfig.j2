@@ -1,0 +1,9 @@
+[user]
+	name = {{ personal_name }}
+	email = {{ personal_email_primary }}
+[core]
+	excludesfile = {{ ansible_env.HOME }}/.gitignore
+[alias]
+	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
+[init]
+	defaultBranch = main
