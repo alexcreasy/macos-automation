@@ -1,7 +1,7 @@
 [user]
 	name = {{ personal_name }}
 	email = {{ personal_email_primary }}
-  signingkey = {{ primary_gpg_private_key.id }}
+	signingkey = {{ primary_gpg_private_key.id }}
 [core]
 	excludesfile = {{ ansible_env.HOME }}/.gitignore
 [alias]
@@ -9,4 +9,4 @@
 [init]
 	defaultBranch = main
 [commit]
-  gpgsign = true
+	gpgsign = true
