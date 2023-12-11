@@ -1,9 +1,12 @@
 [user]
 	name = {{ personal_name }}
 	email = {{ personal_email_primary }}
+  signingkey = {{ primary_gpg_private_key.id }}
 [core]
 	excludesfile = {{ ansible_env.HOME }}/.gitignore
 [alias]
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
 [init]
 	defaultBranch = main
+[commit]
+  gpgsign = true
