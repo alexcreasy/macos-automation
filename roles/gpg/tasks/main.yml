@@ -2,7 +2,8 @@
 - name: Setup GPG on macOS
   when:
     - ansible_os_family == 'Darwin'
-  notify: Kill gpg-agent
+  # notify: Kill gpg-agent
+  notify: Restart gpg-agent
   block:
     - name: Install GPG
       community.general.homebrew:
