@@ -2,5 +2,6 @@
 - name: Setup macOS device with general settings
   hosts: localhost
   roles:
-    # - macos
+    - macos
     - gpg
+    - git
