@@ -7,3 +7,9 @@ work_email: '{{ vault_work_email }}'
 
 # GPG
 primary_gpg_private_key: "{{ vault_primary_gpg_private_key }}"
+
+# SSH
+ed25519_key: '{{ vault_ed25519_key }}'
+ed25519_public_key: '{{ vault_ed25519_public_key }}'
+rsa_key: '{{ vault_rsa_key }}'
+rsa_public_key: '{{ vault_rsa_public_key }}'
