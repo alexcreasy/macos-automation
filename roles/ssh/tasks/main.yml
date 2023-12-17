@@ -8,7 +8,7 @@
     group: staff
 
 - name: Create ssh config file
-  ansible.builting.template:
+  ansible.builtin.template:
     src: config.j2
     dest: '{{ ansible_env.HOME }}/.ssh/confg'
     mode: '0600'
@@ -16,7 +16,7 @@
     group: staff
 
 - name: Create ed25519 key
-  ansible.builting.template:
+  ansible.builtin.template:
     src: id_ed25519.j2
     dest: '{{ ansible_env.HOME }}/.ssh/id_ed25519'
     mode: '0600'
@@ -24,7 +24,7 @@
     group: staff
 
 - name: Create ed25519 public key
-  ansible.builting.template:
+  ansible.builtin.template:
     src: id_ed25519.pub.j2
     dest: '{{ ansible_env.HOME }}/.ssh/id_ed25519.pub'
     mode: '0644'
@@ -32,7 +32,7 @@
     group: staff
 
 - name: Create rsa key
-  ansible.builting.template:
+  ansible.builtin.template:
     src: id_rsa.j2
     dest: '{{ ansible_env.HOME }}/.ssh/id_rsa'
     mode: '0600'
@@ -40,7 +40,7 @@
     group: staff
 
 - name: Create rsa public key
-  ansible.builting.template:
+  ansible.builtin.template:
     src: id_rsa.pub.j2
     dest: '{{ ansible_env.HOME }}/.ssh/id_rsa.pub'
     mode: '0644'
