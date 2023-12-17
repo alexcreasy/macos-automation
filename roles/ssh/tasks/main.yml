@@ -10,7 +10,7 @@
 - name: Create ssh config file
   ansible.builtin.template:
     src: config.j2
-    dest: '{{ ansible_env.HOME }}/.ssh/confg'
+    dest: '{{ ansible_env.HOME }}/.ssh/config'
     mode: '0600'
     owner: '{{ personal_username_primary }}'
     group: staff
@@ -46,13 +46,3 @@
     mode: '0644'
     owner: '{{ personal_username_primary }}'
     group: staff
-    
-
-
-# - name: Template gitconfig file
-#   ansible.builtin.template:
-#     src: .gitconfig.j2
-#     dest: '{{ ansible_env.HOME }}/.gitconfig'
-#     owner: '{{ personal_username_primary }}'
-#     group: staff
-#     mode: '0751'
