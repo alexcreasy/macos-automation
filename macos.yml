@@ -5,3 +5,5 @@
     - macos
     - gpg
     - git
+    - ssh
+    - mac_mouse_fix

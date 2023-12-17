@@ -1,0 +1,6 @@
+---
+- name: Default mac_mouse_fix role test
+  hosts: localhost
+  remote_user: root
+  roles:
+    - mac_mouse_fix
