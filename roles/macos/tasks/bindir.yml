@@ -1,7 +1,7 @@
 ---
 - name: Create ~/bin dir if it doesn't exist
   ansible.builtin.file:
-    path: "{{ lookup('env', 'HOME') }}/bin"
+    path: "{{ ansible_env.HOME }}/bin"
     state: directory
     mode: "0751"
 

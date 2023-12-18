@@ -1,3 +1,5 @@
 ---
 collections: []
-roles: []
+roles:
+  - diodonfrost.p10k
+  - diodonfrost.ohmyzsh

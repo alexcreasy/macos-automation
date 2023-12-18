@@ -1,0 +1,44 @@
+---
+- name: Install ZSH
+  ansible.builtin.package:
+    name:
+      - zsh
+    state: present
+  become: "{{ require_root }}"
+
+- name: Checkout oh-my-zsh
+  ansible.builtin.git:
+    repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
+    version: master
+    dest: '{{ ansible_env.HOME }}/.oh-my-zsh'
+    update: false
+    clone: true
+    accept_newhostkey: true
+
+- name: Checkout powerlevel10k omz theme
+  ansible.builtin.git:
+    repo: 'https://github.com/romkatv/powerlevel10k.git'
+    version: master
+    dest: '{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k'
+    update: false
+    clone: true
+    accept_newhostkey: true
+
+- name: Copy .zshrc file into place
+  ansible.builtin.copy:
+    src: .zshrc
+    dest: '{{ ansible_env.HOME }}/.zshrc'
+    owner: '{{ personal_username_primary }}'
+    mode: '0644'
+
+- name: Copy p10k config file into place
+  ansible.builtin.copy:
+    src: .p10k.zsh
+    dest: '{{ ansible_env.HOME }}/.p10k.zsh'
+    owner: '{{ personal_username_primary }}'
+    mode: '0644'
+
+- name: Change user shell to zsh
+  ansible.builtin.user:
+    name: '{{ personal_username_primary }}'
+    shell: /bin/zsh

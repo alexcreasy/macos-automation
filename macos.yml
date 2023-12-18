@@ -3,6 +3,7 @@
   hosts: localhost
   roles:
     - macos
+    - zsh
     - gpg
     - git
     - ssh
