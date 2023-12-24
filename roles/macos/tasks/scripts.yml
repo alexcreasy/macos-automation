@@ -3,7 +3,7 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: ~/bin/{{ (item | basename | splitext)[0] }}
-    owner: acreasy
+    owner: '{{ personal_username_primary }}'
     group: staff
     mode: "0755"
   with_fileglob:

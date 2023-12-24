@@ -7,3 +7,11 @@
 
 - name: Copy utility scripts
   ansible.builtin.import_tasks: scripts.yml
+
+# - name: Update homebrew and install packages
+#   community.general.homebrew:
+#     name:
+#       - mas
+#       - 
+#     state: present
+#     update_homebrew: true

@@ -1,0 +1,29 @@
+---
+# tasks file for better_snap_tool
+
+- name: Ensure mas is available
+  community.general.homebrew:
+    name: mas
+    state: present
+    update_homebrew: true
+
+- name: Create BetterSnapTool config folder
+  ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/Library/Application Support/BetterSnapTool'
+    state: directory
+    mode: '0700'
+    owner: '{{ personal_username_primary }}'
+    group: staff
+
+- name: Copy BetterSnapTool config file
+  ansible.builtin.copy:
+    src: storedata
+    dest: '{{ ansible_env.HOME }}/Library/Application Support/BetterSnapTool/storedata'
+    mode: '0600'
+    owner: '{{ personal_username_primary }}'
+    group: staff
+
+- name: Install BetterSnapTool from application store
+  community.general.mas:
+    id: 417375580 # BetterSnapTool
+    state: present

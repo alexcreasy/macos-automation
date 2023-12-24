@@ -7,7 +7,7 @@
       ansible.builtin.file:
         path: '{{ ansible_env.HOME }}/Library/Application Support/com.nuebling.mac-mouse-fix'
         state: directory
-        mode: '0755'
+        mode: '0700'
         owner: '{{ personal_username_primary }}'
         group: staff
 
@@ -15,7 +15,7 @@
       ansible.builtin.copy:
         src: config.plist
         dest: '{{ ansible_env.HOME }}/Library/Application Support/com.nuebling.mac-mouse-fix/config.plist'
-        mode: '0644'
+        mode: '0600'
         owner: '{{ personal_username_primary }}'
         group: staff
 
