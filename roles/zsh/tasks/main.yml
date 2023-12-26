@@ -1,4 +1,17 @@
 ---
+- name: Create ~/bin dir if it doesn't exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/bin"
+    state: directory
+    mode: "0700"
+
+- name: Add user bin dir to zshenv
+  ansible.builtin.lineinfile:
+    dest: "{{ ansible_env.HOME }}/.zshenv"
+    insertafter: EOF
+    line: PATH=$HOME/bin:$PATH
+    create: true
+
 - name: Install and configure oh my zsh
   ansible.builtin.import_role:
     name: diodonfrost.ohmyzsh
