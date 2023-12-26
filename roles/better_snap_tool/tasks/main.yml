@@ -5,7 +5,7 @@
   community.general.homebrew:
     name: mas
     state: present
-    update_homebrew: true
+    update_homebrew: false
 
 - name: Create BetterSnapTool config folder
   ansible.builtin.file:
