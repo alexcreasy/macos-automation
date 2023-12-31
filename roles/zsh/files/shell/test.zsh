@@ -1,1 +1,1 @@
-export TEST_VALUE_ZSH="set"
+TEST_VALUE_ZSH="set"
