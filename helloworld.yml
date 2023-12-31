@@ -1,9 +1,0 @@
----
-- name: Hello world playbook
-  hosts: localhost
-  tasks:
-    - name: Say hello world
-      ansible.builtin.debug:
-        msg:
-          - hello world
-          - Also, hello {{ personal_name }}
