@@ -16,7 +16,7 @@ brew update
 brew install git ansible
 
 # Check out workstation setup repo if it's missing
-if [ -d "$HOME/scm/macos-automation" ]; then
+if [ ! -d "$HOME/scm/macos-automation" ]; then
     mkdir -p "$HOME/scm"
     cd "$HOME/scm"
     git clone https://github.com/alexcreasy/macos-automation.git
