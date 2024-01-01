@@ -5,6 +5,10 @@ set -e
 # Install homebrew if it's missing
 if ! command -v brew >/dev/null 2>&1; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    if [[ $(uname -p) = 'arm' ]]; then
+        eval $(/opt/homebrew/bin/brew shellenv)
+    fi
 fi
 
 # Install bare minimum tools to bootstrap system with ansible 
