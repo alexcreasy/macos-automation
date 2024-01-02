@@ -64,3 +64,16 @@
       ansible.builtin.command:
         cmd: ssh-keygen -K
         chdir: "{{ ansible_env.HOME }}/.ssh"
+        creates: id_ed25519_sk_rk_GitHub
+    
+    - name: Rename public sk key
+      ansible.builtin.command:
+        cmd: mv id_ed25519_sk_rk_GitHub.pub id_ed25519_sk.pub
+        chdir: "{{ ansible_env.HOME }}/.ssh"
+        creates: id_ed25519_sk.pub
+    
+    - name: Rename private sk key stub
+      ansible.builtin.command:
+        cmd: mv id_ed25519_sk_rk_GitHub id_ed25519_sk
+        chdir: "{{ ansible_env.HOME }}/.ssh"
+        creates: id_ed25519_sk
