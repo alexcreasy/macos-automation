@@ -53,3 +53,14 @@
       ansible.builtin.command: 
         cmd: gpg --card-status
         creates: "{{ gpg_home }}/private-keys-v1.d/48E5E8A9B9F260817718B854B68F4C47833648DD.key"
+    
+    - name: Create .ssh directory if not present
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/.ssh"
+        state: directory
+        mode: '0700'
+      
+    - name: Create SSH key stubs from YubiKey
+      ansible.builtin.command:
+        cmd: ssh-keygen -K
+        chdir: "{{ ansible_env.HOME }}/.ssh"
