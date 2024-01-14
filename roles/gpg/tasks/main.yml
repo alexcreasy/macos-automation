@@ -17,7 +17,7 @@
         insertafter: EOF
         line: pinentry-program {{ gpg_homebrew_prefix }}/bin/pinentry-mac
         create: true
-        mode: '0644'
+        mode: "0600"
 
     - name: Install and trust GPG keys
       gpg_key:

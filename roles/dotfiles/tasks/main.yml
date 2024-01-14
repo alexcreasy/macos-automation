@@ -1,2 +1,39 @@
 ---
-# tasks file for dotfiles
+- name: Install packages
+  ansible.builtin.package:
+    name:
+      - git
+      - zsh
+    state: present
+  become: "{{ dotfiles_require_root }}"
+
+- name: Clone dotfiles reopository
+  ansible.builtin.git:
+    repo: "{{ dotfiles_git_url }}"
+    version: "{{ dotfiles_git_version }}"
+    dest: "{{ dotfiles_git_dest }}"
+    update: false
+    clone: true
+    accept_newhostkey: true
+
+- name: Clone oh-my-zsh reopository
+  ansible.builtin.git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    version: master
+    dest: "{{ dotfiles_omz_dest }}"
+    update: false
+    clone: true
+    depth: 1
+    accept_newhostkey: true
+
+- name: Clone oh-my-zsh reopository
+  ansible.builtin.git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    version: master
+    dest: "{{ dotfiles_p10k_dest }}"
+    update: false
+    clone: true
+    depth: 1
+    accept_newhostkey: true
+
+# - name: Use stow to symlink dotfiles

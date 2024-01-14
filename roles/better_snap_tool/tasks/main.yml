@@ -9,26 +9,26 @@
 
 - name: Create BetterSnapTool config folder
   ansible.builtin.file:
-    path: '{{ ansible_env.HOME }}/Library/Application Support/BetterSnapTool'
+    path: "{{ ansible_env.HOME }}/Library/Application Support/BetterSnapTool"
     state: directory
-    mode: '0700'
-    owner: '{{ personal_username_primary }}'
+    mode: "0700"
+    owner: "{{ personal_username_primary }}"
     group: staff
 
 - name: Copy BetterSnapTool Application Support config
   ansible.builtin.copy:
     src: storedata
-    dest: '{{ ansible_env.HOME }}/Library/Application Support/BetterSnapTool/storedata'
-    mode: '0600'
-    owner: '{{ personal_username_primary }}'
+    dest: "{{ ansible_env.HOME }}/Library/Application Support/BetterSnapTool/storedata"
+    mode: "0600"
+    owner: "{{ personal_username_primary }}"
     group: staff
 
 - name: Copy BetterSnapTool preferences plist
   ansible.builtin.copy:
     src: com.hegenberg.BetterSnapTool.plist
-    dest: '{{ ansible_env.HOME }}/Library/Preferences/com.hegenberg.BetterSnapTool.plist'
-    mode: '0600'
-    owner: '{{ personal_username_primary }}'
+    dest: "{{ ansible_env.HOME }}/Library/Preferences/com.hegenberg.BetterSnapTool.plist"
+    mode: "0600"
+    owner: "{{ personal_username_primary }}"
     group: staff
 
 - name: Install BetterSnapTool from application store

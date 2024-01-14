@@ -41,19 +41,19 @@
       - "{{ personal_username_primary }}"
     zsh_plugin: ohmyzsh
     # Valid values: lean, classic, rainbow, pure
-    p10k_prompt_style: "classic"
+    p10k_prompt_style: classic
 
     # Show current time
     # Valid values: no, 24-hour, 12-hour
-    p10k_prompt_time: "24-hour"
+    p10k_prompt_time: 24-hour
 
     # Prompt sperator
     # Valid values: angled, vertical, slanted, round
-    p10k_prompt_separator: "angled"
+    p10k_prompt_separator: angled
 
     # Prompt heads
     # Valid values: sharp, blurred, slanted, round
-    p10k_prompt_head: "sharp"
+    p10k_prompt_head: sharp
 
     # Prompt tails
     # Valid values: flat, blurred, sharp, slanted, round
@@ -71,7 +71,7 @@
     # "p10k_prompt_connection" value is "dotted" or "solid"
     # or "p10k_prompt_frame" is not "no"
     # Valid values: lightest, light, dark, darkest, black, white, green, blue
-    p10k_prompt_connection_color: "dark"
+    p10k_prompt_connection_color: dark
 
     # Prompt frame connection
     # Valid values: no, left, right, full
