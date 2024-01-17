@@ -4,6 +4,7 @@
     name:
       - git
       - zsh
+      - stow
     state: present
   become: "{{ dotfiles_require_root }}"
 
@@ -26,7 +27,7 @@
     depth: 1
     accept_newhostkey: true
 
-- name: Clone oh-my-zsh reopository
+- name: Clone powerlevel10k reopository
   ansible.builtin.git:
     repo: https://github.com/romkatv/powerlevel10k.git
     version: master
@@ -36,4 +37,24 @@
     depth: 1
     accept_newhostkey: true
 
-# - name: Use stow to symlink dotfiles
+- name: Unstow
+  ansible.builtin.command:
+    cmd: "stow --dir {{ dotfiles_git_dest }} --target {{ ansible_env.HOME }} --delete unix-common"
+  changed_when: false
+
+- name: Stow
+  ansible.builtin.command:
+    cmd: "stow --dir {{ dotfiles_git_dest }} --target {{ ansible_env.HOME }} --stow unix-common"
+  register: result
+  changed_when: 'result.stderr is search("LINK: ")'
+
+# - name: Unstow everything
+#   shell: "stow -D . --target {{ ansible_env.HOME }}"
+#   changed_when: false
+
+# - name: Run stow
+#   shell: "stow . --target {{ ansible_env.HOME }} --verbose=2"
+#   register: result
+#   changed_when: 'result.stderr is search("LINK: ")'
+
+
