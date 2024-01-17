@@ -37,10 +37,10 @@
     depth: 1
     accept_newhostkey: true
 
-- name: Unstow
-  ansible.builtin.command:
-    cmd: "stow --dir {{ dotfiles_git_dest }} --target {{ ansible_env.HOME }} --delete unix-common"
-  changed_when: false
+# - name: Unstow
+#   ansible.builtin.command:
+#     cmd: "stow --dir {{ dotfiles_git_dest }} --target {{ ansible_env.HOME }} --delete unix-common"
+#   changed_when: false
 
 - name: Stow
   ansible.builtin.command:
@@ -57,4 +57,36 @@
 #   register: result
 #   changed_when: 'result.stderr is search("LINK: ")'
 
+- name: Set fonts installation path as Ansible fact in macOS
+  set_fact:
+    fonts_path: "{{ ansible_env.HOME }}/Library/Fonts"
+  when: ansible_os_family == "Darwin"
 
+- name: Install Meslo Nerd Font Regular
+  ansible.builtin.copy:
+    src: MesloLGS NF Regular.ttf
+    dest: "{{ fonts_path }}/MesloLGS NF Regular.ttf"
+    mode: "0644"
+
+- name: Install Meslo Nerd Font Italic
+  ansible.builtin.copy:
+    src: MesloLGS NF Bold Italic.ttf
+    dest: "{{ fonts_path }}/MesloLGS NF Bold Italic.ttf"
+    mode: "0644"
+
+- name: Install Meslo Nerd Font Bold
+  ansible.builtin.copy:
+    src: MesloLGS NF Bold.ttf
+    dest: "{{ fonts_path }}/MesloLGS NF Bold.ttf"
+    mode: "0644"
+
+- name: Install Meslo Nerd Font Bold Italic
+  ansible.builtin.copy:
+    src: MesloLGS NF Bold Italic.ttf
+    dest: "{{ fonts_path }}/MesloLGS NF Bold Italic.ttf"
+    mode: "0644"
+
+# MesloLGS NF Bold Italic.ttf
+# MesloLGS NF Bold.ttf
+# MesloLGS NF Italic.ttf
+# MesloLGS NF Regular.ttf
