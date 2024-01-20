@@ -25,6 +25,9 @@
             Nj4kqx5QUCI0ThS/YkOxJCXmPUWZbhjpCg56i+2aB6CmK2JGhn57K5mj0MNdBXA4/WnwH6XoPWJzK5Nyu2zB3nAZp+S\
             5hpQs+p1vN1/wsjk="
 
+    - name: Include vault vars
+      ansible.builtin.include_vars: vars/vars
+
     - name: Add SSH config
       ansible.builtin.copy:
         dest: "{{ ansible_env.HOME }}/.ssh/config"
