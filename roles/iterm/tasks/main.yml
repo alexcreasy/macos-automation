@@ -6,7 +6,7 @@
     mode: "0644"
 
 - name: Install iterm2
-  community.general.homebrew:
+  community.general.homebrew_cask:
     name:
       - iterm2
     state: present
