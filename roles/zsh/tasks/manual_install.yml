@@ -4,7 +4,7 @@
     name:
       - zsh
     state: present
-  become: "{{ require_root }}"
+  become: "{{ zsh_require_root }}"
 
 - name: Checkout oh-my-zsh
   ansible.builtin.git:

@@ -12,6 +12,6 @@
 #   community.general.homebrew:
 #     name:
 #       - mas
-#       - 
+#       -
 #     state: present
 #     update_homebrew: true

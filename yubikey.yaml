@@ -8,7 +8,7 @@
     homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
     keys_repo_dir: "{{ ansible_env.HOME }}/scm/keys"
     gpg_key_id: 29D71BE27C8AF3CB839EE797F9BF59EA85435E26
-    gpg_public_key_filename: "gpg.29D71BE27C8AF3CB839EE797F9BF59EA85435E26.pub.asc"
+    gpg_public_key_filename: gpg.29D71BE27C8AF3CB839EE797F9BF59EA85435E26.pub.asc
 
   tasks:
     - name: Install necessary software for YubiKey
@@ -17,7 +17,7 @@
           - gnupg
           - pinentry-mac
         state: present
-    
+
     - name: Initialize GPG
       ansible.builtin.command: gpg --update-trustdb
       register: gpg_init_result
@@ -29,49 +29,50 @@
         insertafter: EOF
         line: pinentry-program {{ homebrew_prefix }}/bin/pinentry-mac
         create: true
-        mode: '0600'
-    
+        mode: "0600"
+
     - name: Checkout public keys repo
       ansible.builtin.git:
         repo: https://github.com/alexcreasy/keys.git
+        version: main
         dest: "{{ keys_repo_dir }}"
-        update: no
-    
+        update: false
+
     - name: Import GPG public key
-      ansible.builtin.shell: gpg --import {{ keys_repo_dir }}/{{ gpg_public_key_filename }}
+      ansible.builtin.command: gpg --import {{ keys_repo_dir }}/{{ gpg_public_key_filename }}
       register: gpg_result
       changed_when: "'imported: 1' in gpg_result.stderr"
-    
+
     - name: Set key trust level to ultimate
-      ansible.builtin.command: 
+      ansible.builtin.command:
         cmd: gpg --import-ownertrust
-        stdin: "{{ gpg_key_id }}:6:" 
+        stdin: "{{ gpg_key_id }}:6:"
       register: trust_result
       changed_when: "'gpg: inserting ownertrust of 6' in trust_result.stderr"
-    
+
     - name: Import private key stubs from YubiKey
-      ansible.builtin.command: 
+      ansible.builtin.command:
         cmd: gpg --card-status
         creates: "{{ gpg_home }}/private-keys-v1.d/48E5E8A9B9F260817718B854B68F4C47833648DD.key"
-    
+
     - name: Create .ssh directory if not present
       ansible.builtin.file:
         path: "{{ ansible_env.HOME }}/.ssh"
         state: directory
-        mode: '0700'
-      
+        mode: "0700"
+
     - name: Create SSH key stubs from YubiKey
       ansible.builtin.command:
         cmd: ssh-keygen -K
         chdir: "{{ ansible_env.HOME }}/.ssh"
         creates: id_ed25519_sk_rk_GitHub
-    
+
     - name: Rename public sk key
       ansible.builtin.command:
         cmd: mv id_ed25519_sk_rk_GitHub.pub id_ed25519_sk.pub
         chdir: "{{ ansible_env.HOME }}/.ssh"
         creates: id_ed25519_sk.pub
-    
+
     - name: Rename private sk key stub
       ansible.builtin.command:
         cmd: mv id_ed25519_sk_rk_GitHub id_ed25519_sk

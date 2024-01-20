@@ -39,12 +39,12 @@
 
 - name: Stow dotfiles
   ansible.builtin.command:
-    cmd: "stow --verbose=2 --dir {{ dotfiles_git_dest }} --target {{ ansible_env.HOME }} --stow unix-common"
+    cmd: stow --verbose=2 --dir {{ dotfiles_git_dest }} --target {{ ansible_env.HOME }} --stow unix-common
   register: result
   changed_when: 'result.stderr is search("LINK: ")'
 
 - name: Set fonts installation path as Ansible fact in macOS
-  set_fact:
+  ansible.builtin.set_fact:
     fonts_path: "{{ ansible_env.HOME }}/Library/Fonts"
   when: ansible_os_family == "Darwin"
 

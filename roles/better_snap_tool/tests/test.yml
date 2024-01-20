@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Default tets for better_snap_tool role
+  hosts: localhost
   remote_user: root
   roles:
     - better_snap_tool

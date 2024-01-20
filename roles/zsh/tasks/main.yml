@@ -8,6 +8,7 @@
 - name: Add user bin dir to zshenv
   ansible.builtin.lineinfile:
     dest: "{{ ansible_env.HOME }}/.zshenv"
+    mode: "0600"
     insertafter: EOF
     line: PATH=$HOME/bin:$PATH
     create: true
@@ -37,7 +38,7 @@
   ansible.builtin.import_role:
     name: diodonfrost.p10k
   vars:
-    p10k_users:
+    p10k_users: # noqa var-naming[no-role-prefix]
       - "{{ personal_username_primary }}"
     zsh_plugin: ohmyzsh
     # Valid values: lean, classic, rainbow, pure
