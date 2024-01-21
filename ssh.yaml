@@ -26,7 +26,8 @@
             5hpQs+p1vN1/wsjk="
 
     - name: Include vault vars
-      ansible.builtin.include_vars: vars/vars
+      ansible.builtin.include_vars:
+        dir: vars
 
     - name: Add SSH config
       ansible.builtin.copy:
