@@ -1,2 +1,7 @@
 ---
-# tasks file for workstation
+- name: Run tasks common to all OS families
+  ansible.builtin.import_tasks: common.yml
+
+- name: Run macOS tasks
+  ansible.builtin.include_tasks: macos.yml
+  when: ansible_os_family == "Darwin"

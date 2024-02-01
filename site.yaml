@@ -3,6 +3,7 @@
   hosts: localhost
 
   roles:
-    - dotfiles
-    - iterm
-    - mac_mouse_fix
+    # - dotfiles
+    # - iterm
+    # - mac_mouse_fix
+    - workstation

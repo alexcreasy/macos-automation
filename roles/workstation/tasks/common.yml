@@ -1,0 +1,4 @@
+---
+- name: Set workstation hostname
+  ansible.builtin.hostname:
+    name: "{{ workstation_hostname }}"
