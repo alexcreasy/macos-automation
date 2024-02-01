@@ -1,2 +1,21 @@
 ---
 workstation_hostname: unknown-host
+
+configure_dock: true
+dockitems_remove:
+  - Maps
+  - Photos
+  - FaceTime
+  - Freeform
+  - TV
+# - Launchpad
+# - TV
+# - Podcasts
+# - 'App Store'
+dockitems_persist:
+  - name: iTerm
+    path: "/Applications/iTerm.app"
+    pos: 3
+# - name: "Sublime Text"
+#   path: "/Applications/Sublime Text.app/"
+#   pos: 5
