@@ -87,14 +87,6 @@
     value: 1
     state: present
 
-- name: Enable HiDPI display modes
-  community.general.osx_defaults:
-    domain: "/Library/Preferences/com.apple.windowserver"
-    key: DisplayResolutionEnabled
-    type: bool
-    value: true
-    state: present
-
 - name: Save screenshots in PNG format
   community.general.osx_defaults:
     domain: com.apple.screencapture
