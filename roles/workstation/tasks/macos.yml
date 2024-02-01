@@ -1,6 +1,6 @@
 ---
 - name: Expand save panel by default
-  community.general.osx_default:
+  community.general.osx_defaults:
     domain: NSGlobalDomain
     key: NSNavPanelExpandedStateForSaveMode
     type: bool
@@ -8,7 +8,7 @@
     state: present
 
 - name: Expand save panel by default2
-  community.general.osx_default:
+  community.general.osx_defaults:
     domain: NSGlobalDomain
     key: NSNavPanelExpandedStateForSaveMode2
     type: bool
@@ -16,7 +16,7 @@
     state: present
 
 - name: Expand print panel by default
-  community.general.osx_default:
+  community.general.osx_defaults:
     domain: NSGlobalDomain
     key: PMPrintingExpandedStateForPrint
     type: bool
@@ -24,7 +24,7 @@
     state: present
 
 - name: Expand print panel by default2
-  community.general.osx_default:
+  community.general.osx_defaults:
     domain: NSGlobalDomain
     key: PMPrintingExpandedStateForPrint2
     type: bool
@@ -32,7 +32,7 @@
     state: present
 
 - name: Save to disk (not to iCloud) by default
-  community.general.osx_default:
+  community.general.osx_defaults:
     domain: NSGlobalDomain
     key: NSDocumentSaveNewDocumentsToCloud
     type: bool
@@ -40,7 +40,7 @@
     state: present
 
 - name: Disable automatic capitalization
-  community.general.osx_default:
+  community.general.osx_defaults:
     domain: NSGlobalDomain
     key: NSAutomaticCapitalizationEnabled
     type: bool
@@ -48,7 +48,7 @@
     state: present
 
 - name: Disable automatic period substitution
-  community.general.osx_default:
+  community.general.osx_defaults:
     domain: NSGlobalDomain
     key: NSAutomaticPeriodSubstitutionEnabled
     type: bool
@@ -56,7 +56,7 @@
     state: present
 
 - name: Disable smart quotes
-  community.general.osx_default:
+  community.general.osx_defaults:
     domain: NSGlobalDomain
     key: NSAutomaticQuoteSubstitutionEnabled
     type: bool
@@ -64,7 +64,7 @@
     state: present
 
 - name: Disable auto-correct
-  community.general.osx_default:
+  community.general.osx_defaults:
     domain: NSGlobalDomain
     key: NSAutomaticSpellingCorrectionEnabled
     type: bool
