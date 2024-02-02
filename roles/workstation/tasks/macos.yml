@@ -200,6 +200,6 @@
     state: present
 
 - name: Configure dock
-  ansible.builtin.import_role: geerlingguy.mac.dock
+  ansible.builtin.include_role: 
+    name: geerlingguy.mac.dock
 
-  

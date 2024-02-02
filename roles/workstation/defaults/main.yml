@@ -12,10 +12,10 @@ dockitems_remove:
 # - TV
 # - Podcasts
 # - 'App Store'
-dockitems_persist:
-  - name: iTerm
-    path: "/Applications/iTerm.app"
-    pos: 3
+# dockitems_persist:
+#   - name: iTerm
+#     path: "/Applications/iTerm.app"
+#     pos: 3
 # - name: "Sublime Text"
 #   path: "/Applications/Sublime Text.app/"
 #   pos: 5
