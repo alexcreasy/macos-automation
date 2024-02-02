@@ -201,3 +201,5 @@
 
 - name: Configure dock
   ansible.builtin.import_role: geerlingguy.mac.dock
+
+  
