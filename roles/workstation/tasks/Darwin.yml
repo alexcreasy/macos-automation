@@ -6,7 +6,7 @@
   ansible.builtin.import_role:
     name:
       - dotfiles
-      - better_snap_tool
-      - mac_mouse_fix
+#      - better_snap_tool
+#      - mac_mouse_fix
       - gpg
       - iterm
