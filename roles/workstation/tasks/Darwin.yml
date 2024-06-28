@@ -12,10 +12,13 @@
 #       - iterm
 
 - name: Include dotfiles role
-  ansible.builtin.include_role: dotfiles
+  ansible.builtin.include_role: 
+    name: dotfiles
 
 - name: Include gpg role
-  ansible.builtin.include_role: gpg
+  ansible.builtin.include_role: 
+    name: gpg
 
 - name: Include iterm role
-  ansible.builtin.include_role: iterm
+  ansible.builtin.include_role: 
+    name: iterm
