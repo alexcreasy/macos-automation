@@ -10,6 +10,12 @@
           - gnupg
           - pinentry-mac
         state: present
+    
+    - name: Set permissions on gpg home folder
+      ansible.builtin.file:
+        path: "{{ gpg_gnupg_home }}"
+        state: directory
+        mode: '0700'
 
     - name: Setup default pinentry program for keychain
       ansible.builtin.lineinfile:

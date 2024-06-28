@@ -1,14 +1,17 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"ansible.python.interpreterPath": "/opt/homebrew/bin/python3.12",
-		"ansible.python.activationScript": "venv/bin/activate",
-		"ansible.ansibleNavigator.path": "venv/bin/ansible-navigator",
-		"ansible.validation.lint.path": "venv/bin/ansible-lint",
-		"editor.formatOnSave": true
-	}
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../dotfiles"
+    }
+  ],
+  "settings": {
+    "ansible.python.interpreterPath": "/opt/homebrew/bin/python3.12",
+    "ansible.python.activationScript": "venv/bin/activate",
+    "ansible.ansibleNavigator.path": "venv/bin/ansible-navigator",
+    "ansible.validation.lint.path": "venv/bin/ansible-lint",
+    "editor.formatOnSave": true
+  }
 }

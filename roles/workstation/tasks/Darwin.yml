@@ -19,6 +19,10 @@
   ansible.builtin.include_role: 
     name: gpg
 
+- name: Include gpg role
+  ansible.builtin.include_role: 
+    name: ssh
+
 - name: Include iterm role
   ansible.builtin.include_role: 
     name: iterm

@@ -13,7 +13,7 @@ fi
 
 # Install bare minimum tools to bootstrap system with ansible 
 brew update
-brew install git ansible
+brew install git ansible python-packaging
 
 # Check out workstation setup repo if it's missing
 if [ ! -d "$HOME/scm/macos-automation" ]; then
