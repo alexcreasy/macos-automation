@@ -1,13 +1,13 @@
 ---
 workstation_hostname: unknown-host
 
-configure_dock: true
-dockitems_remove:
-  - Maps
-  - Photos
-  - FaceTime
-  - Freeform
-  - TV
+# configure_dock: true
+# dockitems_remove:
+#   - Maps
+#   - Photos
+#   - FaceTime
+#   - Freeform
+#   - TV
 # - Launchpad
 # - TV
 # - Podcasts

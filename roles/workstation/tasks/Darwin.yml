@@ -1,0 +1,12 @@
+---
+- name: Set macOS system preferences
+  ansible.builtin.import_tasks: macos-prefs.yml
+
+- name: Import roles specific to macOS
+  ansible.builtin.import_role:
+    name:
+      - dotfiles
+      - better_snap_tool
+      - mac_mouse_fix
+      - gpg
+      - iterm
