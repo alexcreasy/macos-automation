@@ -6,14 +6,18 @@ set -e
 if ! command -v brew >/dev/null 2>&1; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    if [[ $(uname -p) = 'arm' ]]; then
-        eval $(/opt/homebrew/bin/brew shellenv)
-    fi
+    # if [[ $(uname -p) = 'arm' ]]; then
+    #     eval $(/opt/homebrew/bin/brew shellenv)
+    # fi
 fi
 
 # Install bare minimum tools to bootstrap system with ansible 
-brew update
-brew install git ansible python-packaging
+/opt/homebrew/bin/brew update
+/opt/homebrew/bin/brew install git pipx
+
+echo 'export PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH"' >> ~/.zshrc
+. ~/.zshrc
+pipx install --include-deps ansible ansible-lint
 
 # Check out workstation setup repo if it's missing
 if [ ! -d "$HOME/scm/macos-automation" ]; then
@@ -28,13 +32,13 @@ ansible --version
 
 echo "Bootstrap complete!"
 
-if [[ $(uname -p) = 'arm' ]]; then
-    cat << "EOF"
-arm64 arch detected, you will need to run the below command before runing a playbook!
-(copied to clipboard for convenienceP
+# if [[ $(uname -p) = 'arm' ]]; then
+#     cat << "EOF"
+# arm64 arch detected, you will need to run the below command before runing a playbook!
+# (copied to clipboard for convenienceP
       
-    eval $(/opt/homebrew/bin/brew shellenv)
-EOF
-echo 'eval $(/opt/homebrew/bin/brew shellenv)' | pbcopy
-fi
+#     eval $(/opt/homebrew/bin/brew shellenv)
+# EOF
+# echo 'eval $(/opt/homebrew/bin/brew shellenv)' | pbcopy
+# fi
 
