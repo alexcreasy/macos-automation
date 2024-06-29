@@ -26,3 +26,15 @@ fi
 git --version
 ansible --version
 
+echo "Bootstrap complete!"
+
+if [[ $(uname -p) = 'arm' ]]; then
+    cat << "EOF"
+arm64 arch detected, you will need to run the below command before runing a playbook!
+(copied to clipboard for convenienceP
+      
+    eval $(/opt/homebrew/bin/brew shellenv)
+EOF
+echo 'eval $(/opt/homebrew/bin/brew shellenv)' | pbcopy
+fi
+
