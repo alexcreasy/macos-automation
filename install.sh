@@ -15,8 +15,8 @@ fi
 /opt/homebrew/bin/brew update
 /opt/homebrew/bin/brew install git pipx
 
-echo 'export PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH"' >> ~/.zshrc
-. ~/.zshrc
+echo 'export PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH"' >> ~/.zprofile
+. ~/.zprofile
 pipx install --include-deps ansible ansible-lint
 
 # Check out workstation setup repo if it's missing
@@ -31,14 +31,3 @@ git --version
 ansible --version
 
 echo "Bootstrap complete!"
-
-# if [[ $(uname -p) = 'arm' ]]; then
-#     cat << "EOF"
-# arm64 arch detected, you will need to run the below command before runing a playbook!
-# (copied to clipboard for convenienceP
-      
-#     eval $(/opt/homebrew/bin/brew shellenv)
-# EOF
-# echo 'eval $(/opt/homebrew/bin/brew shellenv)' | pbcopy
-# fi
-
