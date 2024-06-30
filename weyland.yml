@@ -1,0 +1,13 @@
+---
+- name: Setup MBP vickers
+  hosts: localhost
+
+  vars:
+    workstation_hostname: weyland
+
+  vars_files:
+    - vars/vault.yaml
+    - vars/keys.yaml
+
+  roles:
+    - workstation

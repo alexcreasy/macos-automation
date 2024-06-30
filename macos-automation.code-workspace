@@ -5,6 +5,9 @@
     },
     {
       "path": "../dotfiles"
+    },
+    {
+      "path": "../macos-setup"
     }
   ],
   "settings": {
