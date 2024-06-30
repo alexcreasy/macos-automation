@@ -11,3 +11,5 @@
 
   roles:
     - workstation
+    - better_snap_tool
+    - mac_mouse_fix

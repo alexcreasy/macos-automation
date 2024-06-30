@@ -16,6 +16,9 @@
         name:
           - gnupg
           - pinentry-mac
+          - ykman
+          - yubico-yubikey-manager
+          - yubico-authenticator
         state: present
 
     - name: Initialize GPG
