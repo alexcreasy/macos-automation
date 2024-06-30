@@ -2,13 +2,19 @@
 
 set -e
 
+# Below method won't work if PATH not correctly set. 
 # Install homebrew if it's missing
-if ! command -v brew >/dev/null 2>&1; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# if ! command -v brew >/dev/null 2>&1; then
+#     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    # if [[ $(uname -p) = 'arm' ]]; then
-    #     eval $(/opt/homebrew/bin/brew shellenv)
-    # fi
+#     # if [[ $(uname -p) = 'arm' ]]; then
+#     #     eval $(/opt/homebrew/bin/brew shellenv)
+#     # fi
+# fi
+
+# Only works on arm macs
+if [ ! -d /opt/homebrew ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Install bare minimum tools to bootstrap system with ansible 
