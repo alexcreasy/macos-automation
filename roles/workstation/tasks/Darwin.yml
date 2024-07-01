@@ -40,9 +40,6 @@
 
 - name: Install software from MAS
   community.general.mas:
-    id:
-      - 937984704 # Amphetamine
-      - 1153157709 # Speedtest
-      - 1352778147 # Bitwarden
+    id: "{{ workstation_mas_apps }}"
     state: present
-  #tags: [never, mas]
+  tags: [app_store]
