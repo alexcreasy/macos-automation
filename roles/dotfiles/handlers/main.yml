@@ -1,5 +1,5 @@
 ---
-- name: reset dotfiles repo
+- name: Reset dotfiles repo
   ansible.builtin.command:
     cmd: git reset --hard
     chdir: "{{ dotfiles_git_dest }}"

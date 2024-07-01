@@ -6,24 +6,24 @@
   when:
     - ansible_os_family == 'Darwin'
     - ansible_machine == 'arm64'
-  
+
 - name: Set macOS system preferences
   ansible.builtin.include_tasks: macos-prefs.yml
 
 - name: Include dotfiles role
-  ansible.builtin.include_role: 
+  ansible.builtin.include_role:
     name: dotfiles
 
 - name: Include gpg role
-  ansible.builtin.include_role: 
+  ansible.builtin.include_role:
     name: gpg
 
 - name: Include ssh role
-  ansible.builtin.include_role: 
+  ansible.builtin.include_role:
     name: ssh
 
 - name: Include iterm role
-  ansible.builtin.include_role: 
+  ansible.builtin.include_role:
     name: iterm
 
 - name: Install homebrew kegs

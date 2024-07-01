@@ -42,7 +42,6 @@ workstation_mas_apps:
   # - 1451685025 # Wireguard
   # - 1475387142 # Tailscale
 
-
 # configure_dock: true
 # dockitems_remove:
 #   - Maps
