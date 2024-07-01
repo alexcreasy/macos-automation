@@ -1,6 +1,4 @@
 ---
-# tasks file for better_snap_tool
-
 - name: Ensure mas is available
   community.general.homebrew:
     name: mas
@@ -35,3 +33,4 @@
   community.general.mas:
     id: 417375580 # BetterSnapTool
     state: present
+  tags: [app_store]
