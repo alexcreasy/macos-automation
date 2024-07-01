@@ -1,0 +1,48 @@
+---
+- name: Create user ssh folder
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
+    mode: "0700"
+    owner: "{{ personal_username_primary }}"
+    group: staff
+
+- name: Create ssh config file
+  ansible.builtin.template:
+    src: config.j2
+    dest: "{{ ansible_env.HOME }}/.ssh/config"
+    mode: "0600"
+    owner: "{{ personal_username_primary }}"
+    group: staff
+
+- name: Create ed25519 key
+  ansible.builtin.template:
+    src: id_ed25519.j2
+    dest: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
+    mode: "0600"
+    owner: "{{ personal_username_primary }}"
+    group: staff
+
+- name: Create ed25519 public key
+  ansible.builtin.template:
+    src: id_ed25519.pub.j2
+    dest: "{{ ansible_env.HOME }}/.ssh/id_ed25519.pub"
+    mode: "0644"
+    owner: "{{ personal_username_primary }}"
+    group: staff
+
+- name: Create rsa key
+  ansible.builtin.template:
+    src: id_rsa.j2
+    dest: "{{ ansible_env.HOME }}/.ssh/id_rsa"
+    mode: "0600"
+    owner: "{{ personal_username_primary }}"
+    group: staff
+
+- name: Create rsa public key
+  ansible.builtin.template:
+    src: id_rsa.pub.j2
+    dest: "{{ ansible_env.HOME }}/.ssh/id_rsa.pub"
+    mode: "0644"
+    owner: "{{ personal_username_primary }}"
+    group: staff

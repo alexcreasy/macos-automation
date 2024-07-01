@@ -1,0 +1,12 @@
+---
+- name: Copy preferences plist
+  ansible.builtin.copy:
+    src: com.googlecode.iterm2.plist
+    dest: "{{ ansible_env.HOME }}/Library/Preferences/com.googlecode.iterm2.plist"
+    mode: "0644"
+
+- name: Install iterm2
+  community.general.homebrew_cask:
+    name:
+      - iterm2
+    state: present

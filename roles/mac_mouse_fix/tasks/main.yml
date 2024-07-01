@@ -1,0 +1,25 @@
+---
+- name: Setup mac-mouse-fix
+  when:
+    - ansible_os_family == 'Darwin'
+  block:
+    - name: Create mac-mouse-fix config directory
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/Library/Application Support/com.nuebling.mac-mouse-fix"
+        state: directory
+        mode: "0700"
+        owner: "{{ personal_username_primary }}"
+        group: staff
+
+    - name: Copy mac-mouse-fix config file
+      ansible.builtin.copy:
+        src: config.plist
+        dest: "{{ ansible_env.HOME }}/Library/Application Support/com.nuebling.mac-mouse-fix/config.plist"
+        mode: "0600"
+        owner: "{{ personal_username_primary }}"
+        group: staff
+
+    - name: Install mac-mouse-fix
+      community.general.homebrew_cask:
+        name: mac-mouse-fix
+        state: present

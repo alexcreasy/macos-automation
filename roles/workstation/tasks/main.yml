@@ -1,0 +1,10 @@
+---
+- name: Run tasks common to all OS families
+  ansible.builtin.include_tasks: common.yml
+
+# - name: Run macOS tasks
+#   ansible.builtin.include_tasks: Darwin.yml
+#   when: ansible_os_family == "Darwin"
+
+- name: Run platform specific setup tasks
+  ansible.builtin.include_tasks: "{{ ansible_os_family }}.yml"

@@ -1,0 +1,45 @@
+---
+- name: Install rosetta2 if arch is arm64
+  ansible.builtin.command: softwareupdate --install-rosetta --agree-to-license
+  args:
+    creates: /Library/Apple/usr/share/rosetta
+  when:
+    - ansible_os_family == 'Darwin'
+    - ansible_machine == 'arm64'
+  
+- name: Set macOS system preferences
+  ansible.builtin.include_tasks: macos-prefs.yml
+
+- name: Include dotfiles role
+  ansible.builtin.include_role: 
+    name: dotfiles
+
+- name: Include gpg role
+  ansible.builtin.include_role: 
+    name: gpg
+
+- name: Include ssh role
+  ansible.builtin.include_role: 
+    name: ssh
+
+- name: Include iterm role
+  ansible.builtin.include_role: 
+    name: iterm
+
+- name: Install homebrew kegs
+  community.general.homebrew:
+    name: "{{ workstation_homebrew_kegs }}"
+    state: present
+    update_homebrew: true
+
+- name: Install homebrew casks
+  community.general.homebrew_cask:
+    name: "{{ workstation_homebrew_casks }}"
+    state: present
+    update_homebrew: true
+
+- name: Install software from MAS
+  community.general.mas:
+    id: "{{ workstation_mas_apps }}"
+    state: present
+  tags: [app_store]

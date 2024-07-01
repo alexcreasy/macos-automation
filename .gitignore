@@ -1,4 +1,6 @@
 .vault-password
+__pycache__/
+venv/
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,linux,windows,visualstudiocode,vim,sublimetext,ansible,terraform
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,windows,visualstudiocode,vim,sublimetext,ansible,terraform

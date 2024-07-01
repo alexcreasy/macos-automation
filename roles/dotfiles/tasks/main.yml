@@ -1,0 +1,74 @@
+---
+- name: Install packages
+  ansible.builtin.package:
+    name:
+      - git
+      - zsh
+      - stow
+    state: present
+  become: "{{ dotfiles_require_root }}"
+
+- name: Clone dotfiles reopository
+  ansible.builtin.git:
+    repo: "{{ dotfiles_git_url }}"
+    version: "{{ dotfiles_git_version }}"
+    dest: "{{ dotfiles_git_dest }}"
+    update: false
+    clone: true
+    accept_newhostkey: true
+
+- name: Clone oh-my-zsh reopository
+  ansible.builtin.git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    version: master
+    dest: "{{ dotfiles_omz_dest }}"
+    update: false
+    clone: true
+    depth: 1
+    accept_newhostkey: true
+
+- name: Clone powerlevel10k reopository
+  ansible.builtin.git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    version: master
+    dest: "{{ dotfiles_p10k_dest }}"
+    update: false
+    clone: true
+    depth: 1
+    accept_newhostkey: true
+
+- name: Stow dotfiles
+  ansible.builtin.command:
+    cmd: stow --verbose=2 --adopt --dir {{ dotfiles_git_dest }} --target {{ ansible_env.HOME }} --stow unix-common
+  register: result
+  changed_when: 'result.stderr is search("LINK: ")'
+  notify: reset dotfiles repo
+
+- name: Set fonts installation path as Ansible fact in macOS
+  ansible.builtin.set_fact:
+    fonts_path: "{{ ansible_env.HOME }}/Library/Fonts"
+  when: ansible_os_family == "Darwin"
+
+- name: Install Meslo Nerd Font Regular
+  ansible.builtin.copy:
+    src: MesloLGS NF Regular.ttf
+    dest: "{{ fonts_path }}/MesloLGS NF Regular.ttf"
+    mode: "0644"
+
+- name: Install Meslo Nerd Font Italic
+  ansible.builtin.copy:
+    src: MesloLGS NF Italic.ttf
+    dest: "{{ fonts_path }}/MesloLGS NF Italic.ttf"
+    mode: "0644"
+
+- name: Install Meslo Nerd Font Bold
+  ansible.builtin.copy:
+    src: MesloLGS NF Bold.ttf
+    dest: "{{ fonts_path }}/MesloLGS NF Bold.ttf"
+    mode: "0644"
+
+- name: Install Meslo Nerd Font Bold Italic
+  ansible.builtin.copy:
+    src: MesloLGS NF Bold Italic.ttf
+    dest: "{{ fonts_path }}/MesloLGS NF Bold Italic.ttf"
+    mode: "0644"

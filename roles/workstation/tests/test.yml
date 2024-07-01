@@ -1,0 +1,6 @@
+---
+- name: Default workstation test
+  hosts: localhost
+  remote_user: root
+  roles:
+    - workstation

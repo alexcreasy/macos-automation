@@ -1,0 +1,6 @@
+---
+- name: Dummy test for GPG role
+  hosts: localhost
+  remote_user: root
+  roles:
+    - gpg

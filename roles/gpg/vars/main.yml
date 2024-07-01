@@ -1,0 +1,4 @@
+---
+gpg_homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
+gpg_homebrew_bin_path: "{{ gpg_homebrew_prefix }}/bin"
+gpg_gnupg_home: "{{ ansible_env.HOME }}/.gnupg"

@@ -1,0 +1,42 @@
+---
+- name: Setup GPG on macOS
+  when:
+    - ansible_os_family == 'Darwin'
+  notify: Kill gpg-agent
+  block:
+    - name: Install GPG
+      community.general.homebrew:
+        name:
+          - gnupg
+          - pinentry-mac
+        state: present
+    
+    - name: Set permissions on gpg home folder
+      ansible.builtin.file:
+        path: "{{ gpg_gnupg_home }}"
+        state: directory
+        mode: '0700'
+
+    - name: Setup default pinentry program for keychain
+      ansible.builtin.lineinfile:
+        dest: "{{ gpg_gnupg_home }}/gpg-agent.conf"
+        insertafter: EOF
+        line: pinentry-program {{ gpg_homebrew_prefix }}/bin/pinentry-mac
+        create: true
+        mode: "0600"
+
+    - name: Install and trust GPG keys
+      gpg_key:
+        content: "{{ gpg_install_key }}"
+        trust: "5"
+        state: present
+
+    # - name: Import primary GPG key
+    #   ansible.builtin.shell: echo "{{ gpg_install_key }}" | gpg --import
+    #   register: gpg_result
+    #   changed_when: "'imported: 1' in gpg_result.stderr"
+
+    # - name: Trust newly imported key
+    #   ansible.builtin.command: expect -c "spawn gpg --edit-key {{ gpg_install_key_id }} trust quit; send \"5\ry\r\"; expect eof"
+    #   register: trust_result
+    #   failed_when: "'imported: 1' in gpg_result.stderr"

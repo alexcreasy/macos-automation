@@ -1,0 +1,63 @@
+---
+workstation_hostname: unknown-host
+
+workstation_homebrew_kegs:
+  - mas
+  - bash
+  - gnupg
+  - ssh-copy-id
+  - vim
+  - rsync
+  - mosh
+  - tmux
+  - htop
+  - unzip
+  - wget
+  - jq
+  - mdcat
+  - coreutils
+  - findutils
+  - gnu-indent
+  - gnu-sed
+  - gnutls
+  - grep
+  - gnu-tar
+  - gnu-getopt
+  - colordiff
+  - zsh
+  - zsh-completions
+  - zsh-autosuggestions
+  - zsh-history-substring-search
+  - zsh-syntax-highlighting
+  - zsh-git-prompt
+
+workstation_homebrew_casks:
+  - sublime-text
+  - coconutbattery
+
+workstation_mas_apps:
+  - 937984704 # Amphetamine
+  - 417375580 # BetterSnapTool
+  - 1153157709 # Speedtest
+  # - 1451685025 # Wireguard
+  # - 1475387142 # Tailscale
+
+
+# configure_dock: true
+# dockitems_remove:
+#   - Maps
+#   - Photos
+#   - FaceTime
+#   - Freeform
+#   - TV
+# - Launchpad
+# - TV
+# - Podcasts
+# - 'App Store'
+# dockitems_persist:
+#   - name: iTerm
+#     path: "/Applications/iTerm.app"
+#     pos: 3
+# - name: "Sublime Text"
+#   path: "/Applications/Sublime Text.app/"
+#   pos: 5

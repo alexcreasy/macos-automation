@@ -1,7 +1,9 @@
 ---
 - name: Apply configuration to the whole site
   hosts: localhost
-  tasks:
-    - name: Print secret greeting
-      ansible.builtin.debug:
-        msg: Value of secret greeting is - {{ greeting }}
+
+  roles:
+    # - dotfiles
+    # - iterm
+    # - mac_mouse_fix
+    - workstation

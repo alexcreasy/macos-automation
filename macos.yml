@@ -1,0 +1,10 @@
+---
+- name: Setup macOS device with general settings
+  hosts: localhost
+  roles:
+    - macos
+    - zsh
+    - gpg
+    - git
+    - ssh
+    - mac_mouse_fix

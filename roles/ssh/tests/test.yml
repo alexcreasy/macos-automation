@@ -1,0 +1,6 @@
+---
+- name: Dummy ssh role test
+  hosts: localhost
+  remote_user: root
+  roles:
+    - ssh

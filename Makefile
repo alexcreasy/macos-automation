@@ -5,10 +5,10 @@ test:
 	ansible-lint
 
 decrypt:
-	ansible-vault decrypt group_vars/all/vault
+	ansible-vault decrypt vars/vault
 
 encrypt:
-	ansible-vault encrypt group_vars/all/vault
+	ansible-vault encrypt vars/vault
 
 gitinit:
 	@./git-init.sh

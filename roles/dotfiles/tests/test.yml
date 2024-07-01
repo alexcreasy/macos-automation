@@ -1,0 +1,6 @@
+---
+- name: Dummy test for dotfiles
+  hosts: localhost
+  remote_user: root
+  roles:
+    - dotfiles

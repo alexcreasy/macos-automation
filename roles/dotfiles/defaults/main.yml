@@ -1,0 +1,6 @@
+---
+dotfiles_git_url: https://github.com/alexcreasy/dotfiles.git
+dotfiles_git_version: stow
+dotfiles_git_dest: "{{ ansible_env.HOME }}/scm/dotfiles"
+dotfiles_omz_dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+dotfiles_p10k_dest: "{{ dotfiles_omz_dest }}/custom/themes/powerlevel10k"

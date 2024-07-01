@@ -1,0 +1,2 @@
+---
+dotfiles_require_root: "{{ true if ansible_pkg_mgr != 'homebrew' else false }}"

@@ -1,0 +1,12 @@
+---
+- name: Setup a macos vm from scratch
+  hosts: localhost
+
+  vars:
+    workstation_hostname: cornholio
+
+  roles:
+    - workstation
+    - dotfiles
+    - iterm
+    - mac_mouse_fix

@@ -1,0 +1,16 @@
+---
+- name: Create ~/bin dir if it doesn't exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/bin"
+    state: directory
+    mode: "0700"
+
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/bin/{{ (item | basename | splitext)[0] }}"
+    owner: "{{ personal_username_primary }}"
+    group: staff
+    mode: "0700"
+  with_fileglob:
+    - scripts/*.sh
