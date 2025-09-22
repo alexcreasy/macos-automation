@@ -1,4 +1,5 @@
 ---
 collections:
-  - name: geerlingguy.mac
+  - geerlingguy.mac
+  - community.general
 roles: []

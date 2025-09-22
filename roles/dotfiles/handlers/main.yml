@@ -3,3 +3,4 @@
   ansible.builtin.command:
     cmd: git reset --hard
     chdir: "{{ dotfiles_git_dest }}"
+  changed_when: true
